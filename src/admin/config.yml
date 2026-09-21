@@ -5,7 +5,7 @@
 # ════════════════════════════════════════════════════════════
 backend:
   name: github
-  repo: 깃허브아이디/저장소이름
+  repo: byul0204-design/wawaacademy
   branch: main
   commit_messages:
     create: "새 글: {{slug}}"
@@ -19,8 +19,8 @@ backend:
 publish_mode: editorial_workflow
 
 locale: "ko"
-site_url: "https://OO.netlify.app"
-display_url: "https://OO.netlify.app"
+site_url: "https://wawaacademy.netlify.app"
+display_url: "https://wawaacademy.netlify.app/"
 logo_url: "/assets/img/favicon.svg"
 
 media_folder: "src/assets/img/uploads"
