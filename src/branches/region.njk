@@ -1,0 +1,46 @@
+---
+layout: base.njk
+section: branches
+pagination:
+  data: collections.branchRegions
+  size: 1
+  alias: r
+permalink: "/branches/{{ r.slug }}/"
+eleventyComputed:
+  title: "{{ r.name }} 지점 | 전국지점"
+  description: "{{ r.name }} 지역 와와학습코칭센터 {{ r.count }}곳의 주소, 연락처, 담당 학교를 확인하세요."
+---
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "ItemList", "name": {{ (r.name + " 와와학습코칭센터") | json | safe }},
+  "itemListElement": [
+  {% for b in r.branches %}{ "@type": "ListItem", "position": {{ loop.index }}, "url": "{{ site.url }}{{ b.url }}", "name": {{ b.data.title | json | safe }} }{% if not loop.last %},{% endif %}
+  {% endfor %}
+] }
+</script>
+<section class="page-head">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치"><a href="/branches/">전국지점</a></nav>
+    <h1>{{ r.name }} 센터</h1>
+    <p>센터 {{ r.count }}곳</p>
+    <nav class="chips" aria-label="지역">
+      <a href="/branches/">전체</a>
+      {% for x in collections.branchRegions %}<a href="/branches/{{ x.slug }}/" {% if x.slug == r.slug %}aria-current="page"{% endif %}>{{ x.name }} {{ x.count }}</a>{% endfor %}
+    </nav>
+  </div>
+</section>
+<section class="sec sec-tight">
+  <div class="wrap">
+    <ul class="branch-cards">
+      {% for b in r.branches %}
+      <li><a href="{{ b.url }}">
+        <img src="{{ b.data.cover | coverOr(loop.index0) }}" alt="" width="600" height="400" loading="lazy">
+        <div>
+          <strong>{{ b.data.branchName }}</strong>
+          <p>{{ b.data.address }}</p>
+          <p class="bc-tel">{{ b.data.phone }}</p>
+        </div>
+      </a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

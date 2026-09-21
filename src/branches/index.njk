@@ -1,0 +1,40 @@
+---
+layout: base.njk
+section: branches
+title: 전국지점
+description: 지역별 와와학습코칭센터의 주소, 연락처, 담당 학교를 확인하세요.
+permalink: /branches/index.html
+---
+<section class="page-head">
+  <div class="wrap page-head-in">
+    <div>
+      <h1>전국지점</h1>
+      <p>지역을 고르면 그 지역 센터만 모아 볼 수 있습니다.</p>
+      <nav class="chips" aria-label="지역">
+        <a aria-current="page" href="/branches/">전체</a>
+        {% for r in collections.branchRegions %}<a href="/branches/{{ r.slug }}/">{{ r.name }} {{ r.count }}</a>{% endfor %}
+      </nav>
+    </div>
+    <img class="page-head-img" src="/assets/img/four-students.webp" alt="" width="1200" height="630">
+  </div>
+</section>
+
+<section class="sec sec-tight">
+  <div class="wrap">
+    {% for r in collections.branchRegions %}
+    <section class="region" id="{{ r.slug }}">
+      <header class="region-head">
+        <h2><a href="/branches/{{ r.slug }}/">{{ r.name }}</a></h2>
+        <span>센터 {{ r.count }}곳</span>
+      </header>
+      <ul class="branch-rows">
+        {% for b in r.branches %}
+        <li><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.phone }}</span></a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% else %}
+    <div class="empty"><strong>아직 등록된 센터가 없습니다.</strong><p>관리자 화면의 전국지점에서 첫 센터를 등록해 보세요.</p></div>
+    {% endfor %}
+  </div>
+</section>

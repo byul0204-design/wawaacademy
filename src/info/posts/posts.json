@@ -1,0 +1,8 @@
+{
+  "layout": "info-post.njk",
+  "tags": ["info"],
+  "permalink": "/info/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "categoryLabel": "{% if category == 'exam' %}내신 대비{% elif category == 'parent' %}학부모 가이드{% elif category == 'admission' %}입시 정보{% else %}공부법{% endif %}"
+  }
+}

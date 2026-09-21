@@ -1,0 +1,15 @@
+---
+layout: base.njk
+title: 상담 신청을 받았습니다
+robots: noindex
+permalink: /thanks/index.html
+eleventyExcludeFromCollections: true
+---
+<section class="wrap thanks">
+  <h1>상담 신청을 받았습니다</h1>
+  <p>고르신 센터에서 하루 안에 전화드리겠습니다. 급하시면 대표 번호로 바로 연락 주셔도 됩니다.</p>
+  <div class="acts">
+    <a class="btn" href="{{ site.phone | tel }}">{{ site.phone }}</a>
+    <a class="btn btn-line" href="/info/">학습정보 둘러보기</a>
+  </div>
+</section>

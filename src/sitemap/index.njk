@@ -1,0 +1,31 @@
+---
+layout: base.njk
+title: 사이트맵
+description: 와와학습코칭센터 사이트의 모든 페이지를 지역과 주제별로 모았습니다.
+permalink: /sitemap/index.html
+---
+<section class="page-head"><div class="wrap"><h1>사이트맵</h1><p>모든 페이지를 한곳에 모았습니다.</p></div></section>
+<section class="sec sec-tight">
+  <div class="wrap sm-grid">
+    <div>
+      <h2 class="h-sm"><a href="/">메인</a></h2>
+      <ul class="sm-list">
+        <li><a href="/#school">학교별 내신 대비</a></li><li><a href="/#nest">둥지학습과 4C</a></li>
+        <li><a href="/#planner">플래너 관리</a></li><li><a href="/#grade">학년별 안내</a></li>
+        <li><a href="/#faq">자주 묻는 질문</a></li><li><a href="/#consult">상담 신청</a></li>
+      </ul>
+      <h2 class="h-sm"><a href="/info/">학습정보</a></h2>
+      {% for c in collections.infoCategories %}
+      <h3 class="sm-sub"><a href="/info/{{ c.slug }}/">{{ c.label }}</a></h3>
+      <ul class="sm-list">{% for p in c.posts %}<li><a href="{{ p.url }}">{{ p.data.title }}</a></li>{% endfor %}</ul>
+      {% endfor %}
+    </div>
+    <div>
+      <h2 class="h-sm"><a href="/branches/">전국지점</a></h2>
+      {% for r in collections.branchRegions %}
+      <h3 class="sm-sub"><a href="/branches/{{ r.slug }}/">{{ r.name }}</a></h3>
+      <ul class="sm-list">{% for b in r.branches %}<li><a href="{{ b.url }}">{{ b.data.branchName }}</a></li>{% endfor %}</ul>
+      {% endfor %}
+    </div>
+  </div>
+</section>

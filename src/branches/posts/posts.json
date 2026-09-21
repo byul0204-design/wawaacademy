@@ -1,0 +1,8 @@
+{
+  "layout": "branch.njk",
+  "tags": ["branch"],
+  "permalink": "/branches/{{ region }}/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "title": "{{ site.brand }} {{ branchName }}"
+  }
+}

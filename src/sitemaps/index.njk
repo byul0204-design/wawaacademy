@@ -1,0 +1,12 @@
+---
+permalink: /sitemap-index.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 사이트맵 묶음: 구글 서치콘솔용. 지역별로 나뉘어 있습니다 -->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>{{ site.url }}/sitemaps/info.xml</loc></sitemap>
+  {%- for r in collections.branchRegions %}
+  <sitemap><loc>{{ site.url }}/sitemaps/branches-{{ r.slug }}.xml</loc></sitemap>
+  {%- endfor %}
+</sitemapindex>

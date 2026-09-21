@@ -1,0 +1,117 @@
+---
+layout: base.njk
+section: branches
+dockHref: "#consult"
+---
+{% set rname = region | regionName %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": {{ title | json | safe }},
+  "url": "{{ site.url }}{{ page.url }}",
+  "telephone": {{ phone | json | safe }},
+  "image": "{{ site.url }}{{ cover | coverOr(1) }}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": {{ rname | json | safe }},
+    "addressLocality": {{ district | json | safe }},
+    "streetAddress": {{ address | json | safe }},
+    "addressCountry": "KR"
+  },
+  "parentOrganization": { "@type": "Organization", "name": {{ site.brand | json | safe }} }
+}
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "전국지점", "item": "{{ site.url }}/branches/" },
+  { "@type": "ListItem", "position": 2, "name": {{ rname | json | safe }}, "item": "{{ site.url }}/branches/{{ region }}/" },
+  { "@type": "ListItem", "position": 3, "name": {{ branchName | json | safe }}, "item": "{{ site.url }}{{ page.url }}" }
+] }
+</script>
+
+{% if sample %}
+<div class="sample-bar"><div class="wrap">예시 지점입니다. 관리자 화면에서 지우고 실제 지점을 등록해 주세요.</div></div>
+{% endif %}
+
+<section class="branch-head">
+  <div class="wrap bh-in">
+    <div>
+      <nav class="crumb" aria-label="현재 위치"><a href="/branches/">전국지점</a><span aria-hidden="true">/</span><a href="/branches/{{ region }}/">{{ rname }}</a></nav>
+      <h1>{{ site.brand }}<br><span>{{ branchName }}</span></h1>
+      {% if description %}<p class="lead">{{ description }}</p>{% endif %}
+      <div class="acts">
+        {% if phone %}<a class="btn" href="{{ phone | tel }}">{{ phone }}</a>{% endif %}
+        <a class="btn btn-line" href="#consult">상담 신청</a>
+        {% if kakao %}<a class="btn btn-line" href="{{ kakao }}" rel="noopener">카카오톡</a>{% endif %}
+      </div>
+    </div>
+    <img class="bh-img" src="{{ cover | coverOr(1) }}" alt="{{ coverAlt or (branchName + ' 대표 사진') }}" width="600" height="600">
+  </div>
+</section>
+
+<section class="sec sec-tight">
+  <div class="wrap two">
+    <dl class="facts">
+      <div><dt>주소</dt><dd>{{ address }}{% if mapUrl %} <a class="text-link" href="{{ mapUrl }}" rel="noopener">지도 보기</a>{% endif %}</dd></div>
+      {% if directions %}<div><dt>찾아오는 길</dt><dd>{{ directions }}</dd></div>{% endif %}
+      {% if hours %}<div><dt>운영 시간</dt><dd>{{ hours }}</dd></div>{% endif %}
+      {% if grades %}<div><dt>대상</dt><dd>{{ grades }}</dd></div>{% endif %}
+      {% if subjects %}<div><dt>과목</dt><dd>{{ subjects }}</dd></div>{% endif %}
+      {% if academyName %}<div><dt>학원명</dt><dd>{{ academyName }}</dd></div>{% endif %}
+      {% if regNo %}<div><dt>등록번호</dt><dd>{{ regNo }}</dd></div>{% endif %}
+      {% if tuitionUrl %}<div><dt>교습비</dt><dd><a class="text-link" href="{{ tuitionUrl }}">교습비 게시표 보기</a></dd></div>{% endif %}
+    </dl>
+
+    {% if schools and schools.length %}
+    <div class="schools">
+      <h2>{{ branchName }}이 맡고 있는 학교</h2>
+      <ul>
+        {% for s in schools %}
+        <li>
+          <span class="s-name">{{ s.name }}</span>
+          {% if s.exam %}<span class="s-dday" data-exam="{{ s.exam | dateISO }}"></span>{% endif %}
+          {% if s.note %}<span class="s-note">{{ s.note }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="fine">목록에 없는 학교도 다닐 수 있습니다. 상담 때 학교 이름을 알려 주세요.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if content | striptags | trim %}
+<section class="sec sec-paper sec-tight">
+  <div class="wrap">
+    <div class="prose prose-left">{{ content | safe }}</div>
+  </div>
+</section>
+{% endif %}
+
+{% set near = [] %}
+{% for b in collections.branches %}{% if b.data.region == region and b.url != page.url and near.length < 6 %}{% set near = (near.push(b), near) %}{% endif %}{% endfor %}
+{% if near.length %}
+<section class="sec sec-tight">
+  <div class="wrap">
+    <h2 class="h-sm">{{ rname }}의 다른 센터</h2>
+    <ul class="branch-rows">
+      {% for b in near %}
+      <li><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.phone }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<section class="sec sec-ink" id="consult-wrap">
+  <div class="wrap two">
+    <div class="ink-side">
+      <h2>{{ branchName }}에<br>상담을 남겨 주세요</h2>
+      <p>아이가 다니는 학교 이름을 알려 주시면 그 학교 시험 이야기부터 나눕니다.</p>
+      {% if phone %}<p class="ink-tel">바로 전화 <a href="{{ phone | tel }}">{{ phone }}</a></p>{% endif %}
+    </div>
+    {% set fixedBranch = branchName %}
+    {% include "partials/consult.njk" %}
+  </div>
+</section>

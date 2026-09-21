@@ -1,0 +1,34 @@
+---
+permalink: /rss.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>{{ site.title }}</title>
+  <link>{{ site.url }}/</link>
+  <description>{{ site.description }}</description>
+  <language>ko</language>
+  <atom:link href="{{ site.url }}/rss.xml" rel="self" type="application/rss+xml"/>
+  {%- for p in collections.info %}
+  <item>
+    <title>{{ p.data.title }}</title>
+    <link>{{ site.url }}{{ p.url }}</link>
+    <guid isPermaLink="true">{{ site.url }}{{ p.url }}</guid>
+    <pubDate>{{ p.date | dateRFC }}</pubDate>
+    <category>{{ p.data.categoryLabel }}</category>
+    <description>{{ p.data.description or (p.templateContent | excerpt(180)) }}</description>
+  </item>
+  {%- endfor %}
+  {%- for b in collections.branches %}
+  <item>
+    <title>{{ b.data.title }}</title>
+    <link>{{ site.url }}{{ b.url }}</link>
+    <guid isPermaLink="true">{{ site.url }}{{ b.url }}</guid>
+    <pubDate>{{ b.date | dateRFC }}</pubDate>
+    <category>전국지점 {{ b.data.region | regionName }}</category>
+    <description>{{ b.data.description or b.data.address }}</description>
+  </item>
+  {%- endfor %}
+</channel>
+</rss>

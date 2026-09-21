@@ -1,0 +1,29 @@
+{% if list.length %}
+  {% set lead = list[0] %}
+  <a class="feature" href="{{ lead.url }}">
+    <img src="{{ lead.data.cover | coverOr(0) }}" alt="" width="600" height="400">
+    <div>
+      <span class="k-cat">{{ lead.data.categoryLabel }}</span>
+      <strong>{{ lead.data.title }}</strong>
+      <p>{{ lead.data.description }}</p>
+      <time datetime="{{ lead.date | dateISO }}">{{ lead.date | dateKR }}</time>
+    </div>
+  </a>
+  {% if list.length > 1 %}
+  <ul class="thumbrows">
+    {% for p in list %}{% if not loop.first %}
+    <li><a href="{{ p.url }}">
+      <img src="{{ p.data.cover | coverOr(loop.index0) }}" alt="" width="240" height="160" loading="lazy">
+      <div>
+        <span class="k-cat">{{ p.data.categoryLabel }}</span>
+        <strong>{{ p.data.title }}</strong>
+        <p>{{ p.data.description }}</p>
+        <time datetime="{{ p.date | dateISO }}">{{ p.date | dateKR }}</time>
+      </div>
+    </a></li>
+    {% endif %}{% endfor %}
+  </ul>
+  {% endif %}
+{% else %}
+  <div class="empty"><strong>아직 글이 없습니다.</strong><p>관리자 화면에서 첫 글을 써 보세요.</p></div>
+{% endif %}

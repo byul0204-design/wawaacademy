@@ -1,0 +1,26 @@
+---
+layout: base.njk
+section: info
+title: 학습정보
+description: 공부법, 학교 내신 대비, 학부모 가이드, 입시 정보를 와와 코치들이 정리해 전합니다.
+permalink: /info/index.html
+---
+<section class="page-head">
+  <div class="wrap page-head-in">
+    <div>
+      <h1>학습정보</h1>
+      <p>코치들이 수업하며 쌓은 공부법과 시험 준비 이야기를 나눕니다.</p>
+      <nav class="chips" aria-label="주제">
+        <a aria-current="page" href="/info/">전체</a>
+        {% for c in collections.infoCategories %}<a href="/info/{{ c.slug }}/">{{ c.label }}</a>{% endfor %}
+      </nav>
+    </div>
+    <img class="page-head-img" src="/assets/img/thinking.webp" alt="" width="600" height="600">
+  </div>
+</section>
+<section class="sec sec-tight">
+  <div class="wrap">
+    {% set list = collections.info %}
+    {% include "partials/info-list.njk" %}
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+layout: base.njk
+section: info
+ogType: article
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | json | safe }},
+  "description": {{ description | json | safe }},
+  "datePublished": "{{ page.date | dateISO }}",
+  "dateModified": "{{ (updated or page.date) | dateISO }}",
+  "image": "{{ site.url }}{{ cover | coverOr(0) }}",
+  "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+  "author": { "@type": "Organization", "name": {{ site.title | json | safe }} },
+  "publisher": { "@type": "Organization", "name": {{ site.title | json | safe }} },
+  "articleSection": {{ categoryLabel | json | safe }}
+}
+</script>
+
+<article class="post">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치"><a href="/info/">학습정보</a><span aria-hidden="true">/</span><a href="/info/{{ category }}/">{{ categoryLabel }}</a></nav>
+    <header class="post-head">
+      <h1>{{ title }}</h1>
+      {% if description %}<p class="sum">{{ description }}</p>{% endif %}
+      <time datetime="{{ page.date | dateISO }}">{{ page.date | dateKR }}{% if updated %}, {{ updated | dateKR }} 고침{% endif %}</time>
+    </header>
+    {% if cover %}<img class="post-cover" src="{{ cover }}" alt="{{ coverAlt or '' }}">{% endif %}
+    <div class="prose">{{ content | safe }}</div>
+
+    <aside class="post-cta">
+      <h2>우리 아이는 지금 어디가 비어 있을까요?</h2>
+      <p>가까운 센터에서 학습 성향 진단과 함께 상담해 드립니다.</p>
+      <div class="acts">
+        <a class="btn" href="/#consult">무료 상담 신청</a>
+        <a class="btn btn-line" href="/branches/">가까운 센터 찾기</a>
+      </div>
+    </aside>
+
+    {% set related = [] %}
+    {% for p in collections.info %}{% if p.url != page.url and p.data.category == category and related.length < 3 %}{% set related = (related.push(p), related) %}{% endif %}{% endfor %}
+    {% if related.length %}
+    <section class="related">
+      <h2>같은 주제의 다른 글</h2>
+      <ul class="rows">
+        {% for p in related %}<li><a href="{{ p.url }}"><strong>{{ p.data.title }}</strong><time datetime="{{ p.date | dateISO }}">{{ p.date | dateKR }}</time></a></li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,14 @@
+---
+permalink: /sitemaps/info.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.url }}/info/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  {%- for c in collections.infoCategories %}
+  <url><loc>{{ site.url }}/info/{{ c.slug }}/</loc><lastmod>{{ c.posts[0].date | dateISO }}</lastmod></url>
+  {%- endfor %}
+  {%- for p in collections.info %}
+  <url><loc>{{ site.url }}{{ p.url }}</loc><lastmod>{{ (p.data.updated or p.date) | dateISO }}</lastmod></url>
+  {%- endfor %}
+</urlset>

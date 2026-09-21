@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% if site.naverVerification %}<meta name="naver-site-verification" content="{{ site.naverVerification }}">{% endif %}
+{% if site.googleVerification %}<meta name="google-site-verification" content="{{ site.googleVerification }}">{% endif %}
+
+<title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }} | {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{{ description or site.description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta name="robots" content="{{ robots or 'index, follow' }}">
+
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ title or site.title }}">
+<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}{{ ogImage or cover or '/assets/img/og.jpg' }}">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/rss.xml">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Pen+Script&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="wordmark" href="/" aria-label="{{ site.title }} 처음으로">
+      <span class="wm-dot" aria-hidden="true"></span>{{ site.brand }}
+    </a>
+    <nav class="tabs-top" aria-label="주요 메뉴">
+      <a href="/" {% if section == "main" %}aria-current="page"{% endif %}>메인</a>
+      <a href="/info/" {% if section == "info" %}aria-current="page"{% endif %}>학습정보</a>
+      <a href="/branches/" {% if section == "branches" %}aria-current="page"{% endif %}>전국지점</a>
+    </nav>
+    <a class="top-cta" href="/#consult">상담 신청</a>
+  </div>
+</header>
+
+<main id="main">
+{{ content | safe }}
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">{{ site.title }}</p>
+      <p>{{ site.tagline }}</p>
+      <p>대표 상담 <a href="{{ site.phone | tel }}">{{ site.phone }}</a></p>
+    </div>
+    <nav class="foot-nav" aria-label="바닥 메뉴">
+      <a href="/">메인</a>
+      <a href="/info/">학습정보</a>
+      <a href="/branches/">전국지점</a>
+      <a href="/sitemap/">사이트맵</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+    <p class="foot-copy">
+      {{ site.brand }}는 {{ site.company }}의 교육 브랜드입니다. 센터별 학원 등록번호와 교습비는 각 센터 페이지에서 확인하실 수 있습니다.<br>
+      © {{ site.since }} {{ site.brand }}
+    </p>
+  </div>
+</footer>
+
+<div class="dock" aria-label="빠른 상담">
+  <a href="{{ site.phone | tel }}">전화하기</a>
+  <a class="dock-main" href="{{ dockHref or '/#consult' }}">상담 신청</a>
+</div>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

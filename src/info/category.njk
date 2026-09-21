@@ -1,0 +1,29 @@
+---
+layout: base.njk
+section: info
+pagination:
+  data: collections.infoCategories
+  size: 1
+  alias: cat
+permalink: "/info/{{ cat.slug }}/"
+eleventyComputed:
+  title: "{{ cat.label }} | 학습정보"
+  description: "와와학습코칭센터 학습정보 중 {{ cat.label }} 글 {{ cat.count }}편을 모았습니다."
+---
+<section class="page-head">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치"><a href="/info/">학습정보</a></nav>
+    <h1>{{ cat.label }}</h1>
+    <p>글 {{ cat.count }}편</p>
+    <nav class="chips" aria-label="주제">
+      <a href="/info/">전체</a>
+      {% for c in collections.infoCategories %}<a href="/info/{{ c.slug }}/" {% if c.slug == cat.slug %}aria-current="page"{% endif %}>{{ c.label }}</a>{% endfor %}
+    </nav>
+  </div>
+</section>
+<section class="sec sec-tight">
+  <div class="wrap">
+    {% set list = cat.posts %}
+    {% include "partials/info-list.njk" %}
+  </div>
+</section>
