@@ -4,7 +4,7 @@ title: "백지 공부법 제대로 하는 법, 효과 있는 이유와 과목별
 description: "백지 공부법은 교과서를 덮고 배운 내용을 빈 종이에 떠올려 적는 복습법입니다. 효과가 있는 이유, 5단계 하는 법, 과목별 방법과 자주 하는 실수를 정리했습니다."
 date: 2026-09-21
 category: study
-cover: /assets/img/uploads/blank-paper-study.webp
+cover: /assets/img/blank-paper-study.webp
 coverAlt: "도서관 칸막이 책상에 교과서와 노트를 펼쳐 두고 웃으며 공부하는 교복 차림 학생"
 ---
 
