@@ -28,6 +28,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("json", (v) => JSON.stringify(v ?? ""));
   eleventyConfig.addFilter("regionName", (slug) => regionName[slug] || slug);
   eleventyConfig.addFilter("tel", (s = "") => "tel:" + String(s).replace(/[^0-9]/g, ""));
+  eleventyConfig.addFilter("telNumber", (s = "") => String(s).replace(/[^0-9]/g, ""));
   // 대표 사진이 없는 글에 번갈아 쓰는 기본 이미지
   const fallbacks = ["/assets/img/girl-writing.webp", "/assets/img/pair-blazers.webp",
                      "/assets/img/pair-shirts.webp", "/assets/img/thinking.webp"];
