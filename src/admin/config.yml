@@ -5,7 +5,7 @@
 # ════════════════════════════════════════════════════════════
 backend:
   name: github
-  repo: byul0204-design/wawaacademy
+  repo: 깃허브아이디/저장소이름
   branch: main
   commit_messages:
     create: "새 글: {{slug}}"
@@ -19,8 +19,8 @@ backend:
 publish_mode: editorial_workflow
 
 locale: "ko"
-site_url: "https://wawaacademy.netlify.app"
-display_url: "https://wawaacademy.netlify.app/"
+site_url: "https://OO.netlify.app"
+display_url: "https://OO.netlify.app"
 logo_url: "/assets/img/favicon.svg"
 
 media_folder: "src/assets/img/uploads"
@@ -161,7 +161,8 @@ collections:
           - { label: "검색용 소개 문장", name: "description", widget: "text" }
           - { label: "사이트 주소 (끝에 / 없이)", name: "url", widget: "string" }
           - { label: "대표 전화", name: "phone", widget: "string" }
-          - { label: "카카오톡 채널", name: "kakao", widget: "string", required: false }
+          - { label: "카카오톡 채널", name: "kakao", widget: "string", required: false, hint: "넣으면 상담 영역에 카카오톡 버튼이 추가됩니다." }
+          - { label: "상담 가능 시간", name: "hours", widget: "string", required: false, hint: "예) 평일 오전 10시 ~ 오후 9시 (일요일 휴무)" }
           - { label: "네이버 소유확인 코드", name: "naverVerification", widget: "string", required: false, hint: "서치어드바이저 HTML 태그의 content 값만" }
           - { label: "구글 소유확인 코드", name: "googleVerification", widget: "string", required: false }
           - { label: "운영자", name: "operator", widget: "string", required: false }
