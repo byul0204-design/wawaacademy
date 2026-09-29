@@ -6,6 +6,5 @@ User-agent: Yeti
 Allow: /
 Disallow: /admin/
 
-# 배포 주소로 바꿔 주세요
-Sitemap: https://OO.netlify.app/sitemap.xml
-Sitemap: https://OO.netlify.app/sitemap-index.xml
+Sitemap: https://wawaacademy.netlify.app/sitemap.xml
+Sitemap: https://wawaacademy.netlify.app/sitemap-index.xml
