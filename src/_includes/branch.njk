@@ -42,7 +42,7 @@ dockHref: "#consult"
       {% if description %}<p class="lead">{{ description }}</p>{% endif %}
       <div class="acts">
         {% if phone %}<a class="btn" href="{{ phone | tel }}">{{ phone }}</a>{% endif %}
-        <a class="btn btn-line" href="#consult">상담 신청</a>
+        <a class="btn btn-line" href="#consult">문자 상담</a>
         {% if kakao %}<a class="btn btn-line" href="{{ kakao }}" rel="noopener">카카오톡</a>{% endif %}
       </div>
     </div>
@@ -107,7 +107,7 @@ dockHref: "#consult"
 <section class="sec sec-ink" id="consult-wrap">
   <div class="wrap two">
     <div class="ink-side">
-      <h2>{{ branchName }}에<br>상담을 남겨 주세요</h2>
+      <h2>{{ branchName }}으로<br>편하게 연락 주세요</h2>
       <p>아이가 다니는 학교 이름을 알려 주시면 그 학교 시험 이야기부터 나눕니다.</p>
       {% if phone %}<p class="ink-tel">바로 전화 <a href="{{ phone | tel }}">{{ phone }}</a></p>{% endif %}
     </div>
