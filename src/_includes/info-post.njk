@@ -18,6 +18,18 @@ ogType: article
   "articleSection": {{ categoryLabel | json | safe }}
 }
 </script>
+{% set faqs = content | faqItems %}
+{% if faqs.length %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for f in faqs %}
+    { "@type": "Question", "name": {{ f.q | json | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | json | safe }} } }{% if not loop.last %},{% endif %}{% endfor %}
+  ]
+}
+</script>
+{% endif %}
 
 <article class="post">
   <div class="wrap">

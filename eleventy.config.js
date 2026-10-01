@@ -36,6 +36,17 @@ export default function (eleventyConfig) {
                      "/assets/img/pair-shirts.webp", "/assets/img/thinking.webp"];
   eleventyConfig.addFilter("coverOr", (cover, i = 0) => cover || fallbacks[i % fallbacks.length]);
 
+  // 본문의 '## 자주 묻는 질문' 아래 '### 질문' + 답변을 뽑아 FAQ 구조화 데이터로
+  eleventyConfig.addFilter("faqItems", (html = "") => {
+    const m = String(html).match(/<h2[^>]*>\s*자주 묻는 질문\s*<\/h2>([\s\S]*?)(?=<h2|$)/);
+    if (!m) return [];
+    const text = (s) => s.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+    return m[1].split(/<h3[^>]*>/).slice(1).map((part) => {
+      const [q, a = ""] = part.split(/<\/h3>/);
+      return { q: text(q), a: text(a) };
+    }).filter((x) => x.q && x.a);
+  });
+
   // ── 학습정보 ────────────────────────────────────────────
   const infoLive = (api) => api.getFilteredByTag("info")
     .filter((p) => !p.data.draft).sort((a, b) => b.date - a.date);
