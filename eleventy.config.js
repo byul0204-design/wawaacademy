@@ -12,6 +12,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.ignores.add("src/admin/**");   // 관리자 화면은 그대로 복사만
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/naver*.html");   // 네이버 소유확인 파일
+  eleventyConfig.ignores.add("src/naver*.html");
 
   // ── 필터 ────────────────────────────────────────────────
   const kst = (d) => new Date(d).toLocaleDateString("ko-KR", {
