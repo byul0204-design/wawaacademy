@@ -20,7 +20,7 @@ eleventyExcludeFromCollections: true
     <description>{{ p.data.description or (p.templateContent | excerpt(180)) }}</description>
   </item>
   {%- endfor %}
-  {%- for b in collections.branches %}
+  {%- for b in collections.branches %}{% if not b.data.sample %}
   <item>
     <title>{{ b.data.title }}</title>
     <link>{{ site.url }}{{ b.url }}</link>
@@ -29,6 +29,6 @@ eleventyExcludeFromCollections: true
     <category>전국지점 {{ b.data.region | regionName }}</category>
     <description>{{ b.data.description or b.data.address }}</description>
   </item>
-  {%- endfor %}
+  {%- endif %}{% endfor %}
 </channel>
 </rss>

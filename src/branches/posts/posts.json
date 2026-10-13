@@ -3,6 +3,7 @@
   "tags": ["branch"],
   "permalink": "/branches/{{ region }}/{{ page.fileSlug }}/",
   "eleventyComputed": {
-    "title": "{{ site.brand }} {{ branchName }}"
+    "title": "{{ site.brand }} {{ branchName }}",
+    "robots": "{% if sample %}noindex, follow{% endif %}"
   }
 }

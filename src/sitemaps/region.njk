@@ -8,8 +8,10 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- if r.realCount %}
   <url><loc>{{ site.url }}/branches/{{ r.slug }}/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  {%- for b in r.branches %}
+  {%- endif %}
+  {%- for b in r.real %}
   <url><loc>{{ site.url }}{{ b.url }}</loc><lastmod>{{ (b.data.updated or b.date) | dateISO }}</lastmod><priority>0.8</priority></url>
   {%- endfor %}
 </urlset>

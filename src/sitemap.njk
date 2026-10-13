@@ -17,10 +17,12 @@ eleventyExcludeFromCollections: true
   <url><loc>{{ site.url }}{{ p.url }}</loc><lastmod>{{ (p.data.updated or p.date) | dateISO }}</lastmod><priority>0.7</priority></url>
   {%- endfor %}
   <!-- 전국지점 (지역별) -->
-  {%- for r in collections.branchRegions %}
+  {#- 예시 지점(sample)과 예시만 있는 지역은 넣지 않음 #}
+  {%- for r in collections.branchRegions %}{% if r.realCount %}
   <!-- {{ r.name }} -->
   <url><loc>{{ site.url }}/branches/{{ r.slug }}/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  {%- for b in r.branches %}
+  {%- endif %}
+  {%- for b in r.real %}
   <url><loc>{{ site.url }}{{ b.url }}</loc><lastmod>{{ (b.data.updated or b.date) | dateISO }}</lastmod><priority>0.8</priority></url>
   {%- endfor %}
   {%- endfor %}

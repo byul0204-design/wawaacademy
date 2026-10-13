@@ -8,7 +8,8 @@ pagination:
 permalink: "/branches/{{ r.slug }}/"
 eleventyComputed:
   title: "{{ r.name }} 지점 | 전국지점"
-  description: "{{ r.name }} 지역 와와학습코칭센터 {{ r.count }}곳의 주소, 연락처, 담당 학교를 확인하세요."
+  description: "{{ r.name }} 지역 와와학습코칭센터 {{ r.count }}곳의 주소와 연락처, 운영 시간, 센터마다 맡고 있는 학교와 시험 일정을 한곳에서 확인하세요."
+  robots: "{% if r.realCount == 0 %}noindex, follow{% endif %}"
 ---
 <script type="application/ld+json">
 { "@context": "https://schema.org", "@type": "ItemList", "name": {{ (r.name + " 와와학습코칭센터") | json | safe }},

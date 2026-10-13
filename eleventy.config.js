@@ -71,7 +71,11 @@ export default function (eleventyConfig) {
     const b = {};
     for (const p of branchLive(api)) (b[p.data.region] = b[p.data.region] || []).push(p);
     return regions.filter((r) => b[r.slug])
-      .map((r) => ({ ...r, branches: b[r.slug], count: b[r.slug].length }));
+      .map((r) => {
+        // real: 예시(sample: true)를 뺀 실제 지점 — 사이트맵·RSS·색인 여부에 사용
+        const real = b[r.slug].filter((p) => !p.data.sample);
+        return { ...r, branches: b[r.slug], count: b[r.slug].length, real, realCount: real.length };
+      });
   });
 
   return {
