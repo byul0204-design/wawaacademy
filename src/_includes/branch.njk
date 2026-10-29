@@ -116,7 +116,7 @@ dockHref: "#consult"
     <h2 class="h-sm">{{ rname }}의 다른 센터</h2>
     <ul class="branch-rows">
       {% for b in near %}
-      <li><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.phone }}</span></a></li>
+      <li><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.subjects }}</span></a></li>
       {% endfor %}
     </ul>
   </div>

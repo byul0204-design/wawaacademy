@@ -29,7 +29,7 @@ permalink: /branches/index.html
       </header>
       <ul class="branch-rows">
         {% for b in r.branches %}
-        <li><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.phone }}</span></a></li>
+        <li><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.subjects }}</span></a></li>
         {% endfor %}
       </ul>
     </section>
