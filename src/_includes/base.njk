@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Pen+Script&display=swap">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v={{ build.v }}">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -75,6 +75,6 @@
   <a class="dock-main" href="{{ dockHref or '/#consult' }}">상담 문의</a>
 </div>
 
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v={{ build.v }}" defer></script>
 </body>
 </html>
