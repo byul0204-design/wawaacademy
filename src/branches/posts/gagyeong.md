@@ -1,6 +1,7 @@
 ---
 branchName: "가경점"
 seoTitle: "가경동 자기주도학습 수학학원 | 중등 고등 개별지도"
+focusKeyword: "가경동 자기주도학습 수학학원"
 region: chungbuk
 district: "청주시 흥덕구"
 address: "충북 청주시 흥덕구 서현북로 18, 2층"

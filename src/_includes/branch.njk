@@ -48,20 +48,40 @@ dockHref: "#consult"
 {% endif %}
 
 <section class="branch-head">
-  <div class="wrap bh-in">
-    <div>
-      <nav class="crumb" aria-label="현재 위치"><a href="/branches/">전국지점</a><span aria-hidden="true">/</span><a href="/branches/{{ region }}/">{{ rname }}</a></nav>
-      {% if seoTitle %}<h1 class="h1-seo">{{ seoTitle }}</h1><p class="bh-name">{{ site.brand }} {{ branchName }}</p>{% else %}<h1>{{ site.brand }}<br><span>{{ branchName }}</span></h1>{% endif %}
-    </div>
+  <div class="wrap bh-in bh-single">
+    <nav class="crumb" aria-label="현재 위치"><a href="/branches/">전국지점</a><span aria-hidden="true">/</span><a href="/branches/{{ region }}/">{{ rname }}</a></nav>
+    <p class="bh-title">{{ seoTitle or (site.brand + ' ' + branchName) }}</p>
     <img class="bh-img" src="{{ cover | coverOr(1) }}" alt="{{ coverAlt or (branchName + ' 대표 사진') }}" width="600" height="600">
+  </div>
+</section>
+
+<section class="sec sec-tight">
+  <div class="wrap">
+    {% if mapImage %}<figure class="branch-map"><img src="{{ mapImage }}" alt="{{ mapAlt or (branchName + ' 위치 지도') }}" loading="lazy" decoding="async"></figure>{% endif %}
+    <dl class="facts facts-loc">
+      <div><dt>주소</dt><dd>{{ address }}{% if mapUrl %} <a class="text-link" href="{{ mapUrl }}" rel="noopener">지도 보기</a>{% endif %}</dd></div>
+      {% if directions %}<div><dt>찾아오는 길</dt><dd>{{ directions }}</dd></div>{% endif %}
+    </dl>
+  </div>
+</section>
+
+{% set autoBanner = 'branch' | autoBanners(content) %}
+{% if autoBanner %}
+<section class="sec sec-tight">
+  <div class="wrap">{{ autoBanner | safe }}</div>
+</section>
+{% endif %}
+
+<section class="sec sec-paper sec-tight">
+  <div class="wrap">
+    <h1 class="h1-focus">{{ focusKeyword or seoTitle or (site.brand + ' ' + branchName) }}</h1>
+    {% if content | striptags | trim %}<div class="prose prose-left">{{ content | bannerize | safe }}</div>{% endif %}
   </div>
 </section>
 
 <section class="sec sec-tight">
   <div class="wrap two">
     <dl class="facts">
-      <div><dt>주소</dt><dd>{{ address }}{% if mapUrl %} <a class="text-link" href="{{ mapUrl }}" rel="noopener">지도 보기</a>{% endif %}</dd></div>
-      {% if directions %}<div><dt>찾아오는 길</dt><dd>{{ directions }}</dd></div>{% endif %}
       {% if hours %}<div><dt>운영 시간</dt><dd>{{ hours }}</dd></div>{% endif %}
       {% if grades %}<div><dt>대상</dt><dd>{{ grades }}</dd></div>{% endif %}
       {% if subjects %}<div><dt>과목</dt><dd>{{ subjects }}</dd></div>{% endif %}
@@ -87,27 +107,6 @@ dockHref: "#consult"
     {% endif %}
   </div>
 </section>
-
-{% if mapImage %}
-<section class="sec sec-tight">
-  <div class="wrap"><figure class="branch-map"><img src="{{ mapImage }}" alt="{{ mapAlt or (branchName + ' 위치 지도') }}" loading="lazy" decoding="async"></figure></div>
-</section>
-{% endif %}
-
-{% set autoBanner = 'branch' | autoBanners(content) %}
-{% if autoBanner %}
-<section class="sec sec-tight">
-  <div class="wrap">{{ autoBanner | safe }}</div>
-</section>
-{% endif %}
-
-{% if content | striptags | trim %}
-<section class="sec sec-paper sec-tight">
-  <div class="wrap">
-    <div class="prose prose-left">{{ content | bannerize | safe }}</div>
-  </div>
-</section>
-{% endif %}
 
 {% set near = [] %}
 {% for b in collections.branches %}{% if b.data.region == region and b.url != page.url and near.length < 6 %}{% set near = (near.push(b), near) %}{% endif %}{% endfor %}

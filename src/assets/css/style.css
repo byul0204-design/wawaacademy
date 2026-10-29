@@ -443,3 +443,10 @@ p{margin:0}
 .bh-name{margin-top:8px;font-weight:600;color:var(--navy-2)}
 .branch-map{max-width:550px;margin:0 auto}
 .branch-map img{display:block;width:100%;height:auto;border-radius:var(--r)}
+
+/* 지점 페이지 순서: 제목 > 썸네일 > 지도+주소 > 광고 이미지 > H1 > 본문 */
+.bh-in.bh-single{display:block;text-align:center}
+.bh-single .crumb{justify-content:center}
+.bh-title{font-size:clamp(24px,3.4vw,36px);font-weight:700;color:var(--navy);letter-spacing:-.03em;line-height:1.3;margin:10px 0 22px}
+.facts-loc{max-width:640px;margin:22px auto 0}
+.h1-focus{font-size:clamp(24px,3vw,32px);font-weight:700;color:var(--navy);letter-spacing:-.03em;line-height:1.3;margin:0 0 22px}
