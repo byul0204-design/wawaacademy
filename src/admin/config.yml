@@ -126,6 +126,9 @@ collections:
       - { label: "한 줄 소개", name: "description", widget: "text", hint: "검색 결과에 보입니다. 담당 학교 이름을 넣으면 좋아요." }
       - { label: "대표 사진", name: "cover", widget: "image", required: false }
       - { label: "대표 사진 설명", name: "coverAlt", widget: "string", required: false }
+      - { label: "검색 제목 (선택)", name: "seoTitle", widget: "string", required: false, hint: "비워 두면 '와와학습코칭센터 ○○점'. 예) 가경동 자기주도학습 수학학원 | 중등 고등 개별지도" }
+      - { label: "지점 지도 이미지", name: "mapImage", widget: "image", required: false, hint: "주소·학교 정보 바로 아래에 나옵니다." }
+      - { label: "지점 지도 설명", name: "mapAlt", widget: "string", required: false }
       - { label: "카카오톡 채널 주소", name: "kakao", widget: "string", required: false }
       - { label: "네이버 지도 주소", name: "mapUrl", widget: "string", required: false }
       - { label: "학원명 (교육청 등록)", name: "academyName", widget: "string", required: false }

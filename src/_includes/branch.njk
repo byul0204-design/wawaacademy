@@ -8,7 +8,7 @@ dockHref: "#consult"
 {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  "name": {{ title | json | safe }},
+  "name": {{ (academyName or (site.brand + ' ' + branchName)) | json | safe }},
   "url": "{{ site.url }}{{ page.url }}",
   "telephone": {{ phone | json | safe }},
   "image": "{{ site.url }}{{ cover | coverOr(1) }}",
@@ -30,6 +30,19 @@ dockHref: "#consult"
 ] }
 </script>
 
+{% set faqs = content | faqItems %}
+{% if faqs.length %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for f in faqs %}
+    { "@type": "Question", "name": {{ f.q | json | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | json | safe }} } }{% if not loop.last %},{% endif %}{% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
 {% if sample %}
 <div class="sample-bar"><div class="wrap">예시 지점입니다. 관리자 화면에서 지우고 실제 지점을 등록해 주세요.</div></div>
 {% endif %}
@@ -38,7 +51,7 @@ dockHref: "#consult"
   <div class="wrap bh-in">
     <div>
       <nav class="crumb" aria-label="현재 위치"><a href="/branches/">전국지점</a><span aria-hidden="true">/</span><a href="/branches/{{ region }}/">{{ rname }}</a></nav>
-      <h1>{{ site.brand }}<br><span>{{ branchName }}</span></h1>
+      {% if seoTitle %}<h1 class="h1-seo">{{ seoTitle }}</h1><p class="bh-name">{{ site.brand }} {{ branchName }}</p>{% else %}<h1>{{ site.brand }}<br><span>{{ branchName }}</span></h1>{% endif %}
       {% if description %}<p class="lead">{{ description }}</p>{% endif %}
       <div class="acts">
         {% if phone %}<a class="btn" href="{{ phone | tel }}">{{ phone }}</a>{% endif %}
@@ -80,6 +93,12 @@ dockHref: "#consult"
     {% endif %}
   </div>
 </section>
+
+{% if mapImage %}
+<section class="sec sec-tight">
+  <div class="wrap"><figure class="branch-map"><img src="{{ mapImage }}" alt="{{ mapAlt or (branchName + ' 위치 지도') }}" loading="lazy" decoding="async"></figure></div>
+</section>
+{% endif %}
 
 {% set autoBanner = 'branch' | autoBanners(content) %}
 {% if autoBanner %}

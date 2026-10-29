@@ -437,3 +437,9 @@ p{margin:0}
 .promo-banner{max-width:860px;margin:0 auto}
 .promo-banner a{display:block}
 .promo-banner img,.prose .promo-banner img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:0;box-shadow:none}
+
+/* 지점 검색 제목·지점 지도 */
+.branch-head .h1-seo{font-size:clamp(26px,3.6vw,40px);font-weight:700;color:var(--navy);letter-spacing:-.03em;line-height:1.3}
+.bh-name{margin-top:8px;font-weight:600;color:var(--navy-2)}
+.branch-map{max-width:550px;margin:0 auto}
+.branch-map img{display:block;width:100%;height:auto;border-radius:var(--r)}
