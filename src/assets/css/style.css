@@ -432,3 +432,8 @@ p{margin:0}
 @media (min-width:560px){
   .c-way{padding:20px 24px}
 }
+
+/* 반복 배너 (src/_data/banners.json) */
+.promo-banner{max-width:860px;margin:0 auto}
+.promo-banner a{display:block}
+.promo-banner img,.prose .promo-banner img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:0;box-shadow:none}

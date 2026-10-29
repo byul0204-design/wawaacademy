@@ -40,7 +40,7 @@ ogType: article
       <time datetime="{{ page.date | dateISO }}">{{ page.date | dateKR }}{% if updated %}, {{ updated | dateKR }} 고침{% endif %}</time>
     </header>
     {% if cover %}<img class="post-cover" src="{{ cover }}" alt="{{ coverAlt or '' }}">{% endif %}
-    <div class="prose">{{ content | safe }}</div>
+    <div class="prose">{{ content | bannerize | safe }}</div>
 
     <aside class="post-cta">
       <h2>우리 아이는 지금 어디가 비어 있을까요?</h2>

@@ -36,6 +36,39 @@ export default function (eleventyConfig) {
                      "/assets/img/pair-shirts.webp", "/assets/img/thinking.webp"];
   eleventyConfig.addFilter("coverOr", (cover, i = 0) => cover || fallbacks[i % fallbacks.length]);
 
+  // 반복 배너 (워드프레스 스니펫 역할)
+  // 이미지: src/assets/img/banners/<이름>/ 폴더의 파일을 이름순으로 이어 붙임
+  // 설정: src/_data/banners.json (alt, 링크, 자동으로 붙일 곳), 크기: src/_data/bannerDims.json
+  // 본문에 <!-- banner:이름 --> 를 쓰면 그 자리에 들어가고,
+  // auto 에 "branch" 가 있으면 모든 지점 페이지의 주소·학교 정보 아래에 자동으로 붙음
+  const readJson = (p) => { try { return JSON.parse(fs.readFileSync(p, "utf-8")); } catch { return {}; } };
+  const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  const bannerHtml = (key) => {
+    const b = readJson("./src/_data/banners.json")[key];
+    const dims = readJson("./src/_data/bannerDims.json")[key] || {};
+    const dir = `./src/assets/img/banners/${key}`;
+    if (!b || !fs.existsSync(dir)) return "";
+    const files = fs.readdirSync(dir).filter((f) => /\.(webp|jpe?g|png|gif)$/i.test(f)).sort();
+    if (!files.length) return "";
+    const imgs = files.map((f, i) => {
+      const [w, h] = dims[f] || [];
+      const size = w && h ? ` width="${w}" height="${h}"` : "";
+      return `<img src="/assets/img/banners/${key}/${f}" alt="${i === 0 ? esc(b.alt) : ""}"${size} loading="lazy" decoding="async">`;
+    }).join("");
+    const body = b.link ? `<a href="${esc(b.link)}" aria-label="${esc(b.label || "")}">${imgs}</a>` : imgs;
+    return `<figure class="promo-banner" data-banner="${key}">${body}</figure>`;
+  };
+  eleventyConfig.addFilter("bannerize", (html = "") =>
+    String(html).replace(/<!--\s*banner:([a-z0-9-]+)\s*-->/g, (m, key) => bannerHtml(key)));
+  eleventyConfig.addFilter("autoBanners", (place, html = "") => {
+    const all = readJson("./src/_data/banners.json");
+    return Object.keys(all)
+      .filter((key) => (all[key].auto || []).includes(place))
+      .filter((key) => !new RegExp(`<!--\\s*banner:${key}\\s*-->`).test(String(html)))
+      .map((key) => bannerHtml(key))
+      .join("");
+  });
+
   // 본문의 '## 자주 묻는 질문' 아래 '### 질문' + 답변을 뽑아 FAQ 구조화 데이터로
   eleventyConfig.addFilter("faqItems", (html = "") => {
     const m = String(html).match(/<h2[^>]*>\s*자주 묻는 질문\s*<\/h2>([\s\S]*?)(?=<h2|$)/);

@@ -81,10 +81,17 @@ dockHref: "#consult"
   </div>
 </section>
 
+{% set autoBanner = 'branch' | autoBanners(content) %}
+{% if autoBanner %}
+<section class="sec sec-tight">
+  <div class="wrap">{{ autoBanner | safe }}</div>
+</section>
+{% endif %}
+
 {% if content | striptags | trim %}
 <section class="sec sec-paper sec-tight">
   <div class="wrap">
-    <div class="prose prose-left">{{ content | safe }}</div>
+    <div class="prose prose-left">{{ content | bannerize | safe }}</div>
   </div>
 </section>
 {% endif %}
