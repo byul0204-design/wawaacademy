@@ -9,7 +9,7 @@
 <title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }} | {{ site.tagline }}{% endif %}</title>
 <meta name="description" content="{{ description or site.description }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-<meta name="robots" content="{{ robots or 'index, follow' }}">
+<meta name="robots" content="{{ robots or 'index, follow, max-image-preview:large' }}">
 
 <meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:site_name" content="{{ site.title }}">
@@ -19,6 +19,8 @@
 <meta property="og:image" content="{{ site.url }}{{ ogImage or cover or '/assets/img/og.jpg' }}">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ site.url }}{{ ogImage or cover or '/assets/img/og.jpg' }}">
+{% if page.url == "/" %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":{{ site.title | json | safe }},"alternateName":"와와학습코칭","url":"{{ site.url }}/"}</script>{% endif %}
 <meta name="theme-color" content="#FFFFFF">
 
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/rss.xml">
