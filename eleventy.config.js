@@ -53,7 +53,7 @@ export default function (eleventyConfig) {
     const imgs = files.map((f, i) => {
       const [w, h] = dims[f] || [];
       const size = w && h ? ` width="${w}" height="${h}"` : "";
-      return `<img src="/assets/img/banners/${key}/${f}" alt="${i === 0 ? esc(b.alt) : ""}"${size} loading="lazy" decoding="async">`;
+      return `<img data-banner-src="/assets/img/banners/${key}/${f}" alt="${i === 0 ? esc(b.alt) : ""}"${size} loading="lazy" decoding="async">`;
     }).join("");
     const body = b.link ? `<a href="${esc(b.link)}" aria-label="${esc(b.label || "")}">${imgs}</a>` : imgs;
     return `<figure class="promo-banner" data-banner="${key}">${body}</figure>`;
