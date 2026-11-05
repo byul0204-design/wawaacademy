@@ -21,6 +21,14 @@ permalink: /branches/index.html
 
 <section class="sec sec-tight">
   <div class="wrap">
+    {% if collections.branchRegions.length %}
+    <form class="branch-search" role="search" data-branch-search onsubmit="return false">
+      <label for="branch-q">지점 찾기</label>
+      <input id="branch-q" type="search" name="q" placeholder="동네, 지점명, 학교 이름으로 검색 (예: 갈매, 서현중)" autocomplete="off">
+      <p class="branch-search-count" aria-live="polite" data-branch-count></p>
+    </form>
+    <div class="empty" data-branch-empty hidden><strong>찾는 지점이 없습니다.</strong><p>다른 동네 이름이나 학교 이름으로 검색해 보시거나, 대표 상담 <a href="{{ site.phone | tel }}">{{ site.phone }}</a>으로 문의해 주세요.</p></div>
+    {% endif %}
     {% for r in collections.branchRegions %}
     <section class="region" id="{{ r.slug }}">
       <header class="region-head">
@@ -29,7 +37,7 @@ permalink: /branches/index.html
       </header>
       <ul class="branch-rows">
         {% for b in r.branches %}
-        <li><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.subjects }}</span></a></li>
+        <li data-search="{{ [r.name, b.data.branchName, b.data.district, b.data.address, b.data.directions, b.data.subjects, b.data.seoTitle, b.data.focusKeyword] | join(' ') }}{% for s in b.data.schools %} {{ s.name }}{% endfor %}"><a href="{{ b.url }}"><strong>{{ b.data.branchName }}</strong><span>{{ b.data.district }}</span><span>{{ b.data.subjects }}</span></a></li>
         {% endfor %}
       </ul>
     </section>

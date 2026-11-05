@@ -31,3 +31,34 @@
     });
   });
 })();
+
+// 전국지점 검색 (지점명·동네·주소·학교 이름)
+(function () {
+  const form = document.querySelector("[data-branch-search]");
+  if (!form) return;
+  const input = form.querySelector("input");
+  const count = form.querySelector("[data-branch-count]");
+  const empty = document.querySelector("[data-branch-empty]");
+  const items = [...document.querySelectorAll("li[data-search]")];
+  const norm = (s) => String(s || "").toLowerCase().replace(/[\s·,()|-]/g, "");
+  items.forEach((li) => { li._t = norm(li.dataset.search); });
+  const run = () => {
+    const words = input.value.trim().split(/\s+/).map(norm).filter(Boolean);
+    let shown = 0;
+    items.forEach((li) => {
+      const ok = words.every((w) => li._t.includes(w));
+      li.hidden = !ok; if (ok) shown++;
+    });
+    document.querySelectorAll(".region").forEach((sec) => {
+      sec.hidden = !sec.querySelector("li[data-search]:not([hidden])");
+    });
+    empty.hidden = shown > 0;
+    count.textContent = words.length ? "검색 결과 " + shown + "곳" : "";
+    const u = new URL(location.href);
+    if (words.length) u.searchParams.set("q", input.value.trim()); else u.searchParams.delete("q");
+    history.replaceState(null, "", u);
+  };
+  input.addEventListener("input", run);
+  const q = new URLSearchParams(location.search).get("q");
+  if (q) { input.value = q; run(); }
+})();
