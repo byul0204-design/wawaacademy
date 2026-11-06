@@ -106,7 +106,7 @@ coverAlt: "교문 앞에서 가방을 메고 웃으며 서 있는 초록색 교�
 <li><b>No (other) + 단수명사 + as + 원급 + as</b><span>No other mountain in the world is as high as Mt. Everest.</span></li>
 </ol>
 
-any other 뒤에는 **단수명사**가 온다는 점을 꼭 기억하세요. "than any other mountains"는 틀린 문장입니다. 비교 문장의 주어와 보어 자리가 헷갈린다면 [문장성분 글](/info/sentence-components/)을 먼저 보면 구조가 잡힙니다.
+any other 뒤에는 **단수명사**가 온다는 점을 꼭 기억하세요. "than any other mountains"는 틀린 문장입니다. 비교 대상을 꾸미는 긴 수식어가 붙은 문장은 [관계대명사 글](/info/relative-pronoun/)에서 구조를 함께 확인해 보세요.
 
 ## 확인 문제
 
