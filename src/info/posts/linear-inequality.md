@@ -32,11 +32,11 @@ coverAlt: "밝은 학교 로비에 나란히 서서 환하게 웃는 남학생�
 ## 일차부등식 풀이 순서
 
 <ol class="steps">
-<li><b>괄호 풀기</b><span>분배법칙으로 괄호를 풉니다. 3(x − 2) > x + 4 → 3x − 6 > x + 4</span></li>
+<li><b>괄호 풀기</b><span>분배법칙으로 괄호를 풉니다. 3(x − 2) &gt; x + 4 → 3x − 6 &gt; x + 4</span></li>
 <li><b>계수를 정수로</b><span>소수면 10, 100을, 분수면 분모의 최소공배수를 양변에 곱합니다. 양수를 곱하니 방향은 그대로입니다.</span></li>
-<li><b>이항하기</b><span>x가 있는 항은 왼쪽, 수는 오른쪽으로 옮깁니다. 3x − x > 4 + 6</span></li>
-<li><b>정리하기</b><span>동류항끼리 계산합니다. 2x > 10</span></li>
-<li><b>x의 계수로 나누기</b><span>x > 5. 계수가 음수라면 이 단계에서 부등호 방향을 바꿉니다.</span></li>
+<li><b>이항하기</b><span>x가 있는 항은 왼쪽, 수는 오른쪽으로 옮깁니다. 3x − x &gt; 4 + 6</span></li>
+<li><b>정리하기</b><span>동류항끼리 계산합니다. 2x &gt; 10</span></li>
+<li><b>x의 계수로 나누기</b><span>x &gt; 5. 계수가 음수라면 이 단계에서 부등호 방향을 바꿉니다.</span></li>
 </ol>
 
 <div class="callout tip">
@@ -53,8 +53,8 @@ coverAlt: "밝은 학교 로비에 나란히 서서 환하게 웃는 남학생�
 <ul class="cards cards-2">
 <li><span class="card-k">x &gt; 2</span><b>빈 동그라미 + 오른쪽</b><p>2는 해가 아니므로 ○로 표시하고 오른쪽으로 화살표를 긋습니다.</p></li>
 <li><span class="card-k">x ≤ −1</span><b>채운 동그라미 + 왼쪽</b><p>−1도 해이므로 ●로 표시하고 왼쪽으로 화살표를 긋습니다.</p></li>
-<li><span class="card-k">해가 없는 경우</span><b>0·x &gt; 3</b><p>x에 어떤 수를 넣어도 0 > 3이 되어 거짓이니 해가 없습니다. 2(x + 1) > 2x + 5처럼 정리했을 때 x가 사라지는 문제에서 나옵니다.</p></li>
-<li><span class="card-k">모든 수가 해</span><b>0·x &gt; −2</b><p>어떤 x를 넣어도 0 > −2가 참이니 모든 수가 해입니다.</p></li>
+<li><span class="card-k">해가 없는 경우</span><b>0·x &gt; 3</b><p>x에 어떤 수를 넣어도 0 &gt; 3이 되어 거짓이니 해가 없습니다. 2(x + 1) &gt; 2x + 5처럼 정리했을 때 x가 사라지는 문제에서 나옵니다.</p></li>
+<li><span class="card-k">모든 수가 해</span><b>0·x &gt; −2</b><p>어떤 x를 넣어도 0 &gt; −2가 참이니 모든 수가 해입니다.</p></li>
 </ul>
 
 ## 일차부등식 활용, 개수·거리·농도
@@ -74,8 +74,8 @@ coverAlt: "밝은 학교 로비에 나란히 서서 환하게 웃는 남학생�
 여섯 문제로 확인해 보세요. 답을 먼저 정한 뒤 문항을 눌러 확인합니다.
 
 <details class="reveal">
-<summary>① 3x − 5 > 7의 해는?</summary>
-<p><b>x > 4</b>. 3x > 12에서 양변을 3으로 나눕니다.</p>
+<summary>① 3x − 5 &gt; 7의 해는?</summary>
+<p><b>x &gt; 4</b>. 3x &gt; 12에서 양변을 3으로 나눕니다.</p>
 </details>
 
 <details class="reveal">
@@ -84,8 +84,8 @@ coverAlt: "밝은 학교 로비에 나란히 서서 환하게 웃는 남학생�
 </details>
 
 <details class="reveal">
-<summary>③ 0.3x − 0.5 < 0.1x + 0.7의 해는?</summary>
-<p><b>x < 6</b>. 양변에 10을 곱하면 3x − 5 < x + 7, 2x < 12입니다.</p>
+<summary>③ 0.3x − 0.5 &lt; 0.1x + 0.7의 해는?</summary>
+<p><b>x &lt; 6</b>. 양변에 10을 곱하면 3x − 5 &lt; x + 7, 2x &lt; 12입니다.</p>
 </details>
 
 <details class="reveal">
@@ -94,8 +94,8 @@ coverAlt: "밝은 학교 로비에 나란히 서서 환하게 웃는 남학생�
 </details>
 
 <details class="reveal">
-<summary>⑤ 2(x + 1) > 2x + 5의 해는?</summary>
-<p><b>해가 없다</b>. 정리하면 0·x > 3이 되어 어떤 x도 만족하지 않습니다.</p>
+<summary>⑤ 2(x + 1) &gt; 2x + 5의 해는?</summary>
+<p><b>해가 없다</b>. 정리하면 0·x &gt; 3이 되어 어떤 x도 만족하지 않습니다.</p>
 </details>
 
 <details class="reveal">
