@@ -8,7 +8,7 @@ cover: /assets/img/indirect-question.webp
 coverAlt: "빈 교실 책상에 앉아 연필로 시험지를 풀며 웃고 있는 교복 차림의 여학생"
 ---
 
-**간접의문문**은 "Where does she live?" 같은 의문문이 다른 문장 속에 들어가 목적어·주어·보어 역할을 하는 것입니다. 이때 어순이 **"의문사 + 주어 + 동사"**의 평서문 순서로 바뀝니다. 그래서 "I don't know **where she lives**."가 됩니다. 의문사가 없는 의문문은 **if 또는 whether**를 붙여 "I wonder **if she is** home."처럼 만듭니다. 시험에서는 어순 고르기, do·does·did를 없애고 동사 형태 바꾸기, 그리고 **think·believe 같은 생각동사가 있을 때 의문사를 맨 앞으로 보내는 문제**가 가장 많이 나옵니다.
+**간접의문문**은 "Where does she live?" 같은 의문문이 다른 문장 속에 들어가 목적어·주어·보어 역할을 하는 것입니다. 이때 어순이 "**의문사 + 주어 + 동사**"의 평서문 순서로 바뀝니다. 그래서 "I don't know **where she lives**."가 됩니다. 의문사가 없는 의문문은 **if 또는 whether**를 붙여 "I wonder **if she is** home."처럼 만듭니다. 시험에서는 어순 고르기, do·does·did를 없애고 동사 형태 바꾸기, 그리고 **think·believe 같은 생각동사가 있을 때 의문사를 맨 앞으로 보내는 문제**가 가장 많이 나옵니다.
 
 <div class="tldr">
 <span class="tldr-t">핵심 요약</span>
